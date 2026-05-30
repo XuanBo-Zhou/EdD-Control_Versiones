@@ -27,10 +27,20 @@ class PushService implements NotificationService{
 }
 
 public class NotificationManager {
+    EmailService EService = new EmailService();
+    SMSService SService = new SMSService();
+    PushService PService = new PushService();
     // TODO: Aplicar patrón Strategy para los tipos de notificación
     // TODO: Añadir sistema de logs
     
     public void send(String type, String message, String recipient) {
+        if(type.equals("email")){
+            EService.send(message, recipient);
+        } else if (type.equals("sms")) {
+            SService.send(message, recipient);
+        } else if (type.equals("push")) {
+            PService.send(message, recipient);
+        }
     }
     
     // TODO: Añadir método para enviar a múltiples destinatarios
