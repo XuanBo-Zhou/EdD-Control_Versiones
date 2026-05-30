@@ -1,15 +1,19 @@
 // NotificationManager.java - Código a refactorizar
+class EmailService implements NotificationService{
+    @Override
+    public void send(String message, String recipient) {
+        // Código para enviar email
+        System.out.println("Enviando email a " + recipient + ": " + message);
+        // Lógica compleja de email aquí...
+    }
+}
 public class NotificationManager {
     // TODO: Separar en clases diferentes: EmailService, SMSService, PushService
     // TODO: Aplicar patrón Strategy para los tipos de notificación
     // TODO: Añadir sistema de logs
     
     public void send(String type, String message, String recipient) {
-        if (type.equals("email")) {
-            // Código para enviar email
-            System.out.println("Enviando email a " + recipient + ": " + message);
-            // Lógica compleja de email aquí...
-        } else if (type.equals("sms")) {
+        if (type.equals("sms")) {
             // Código para enviar SMS
             System.out.println("Enviando SMS a " + recipient + ": " + message);
             // Lógica compleja de SMS aquí...
