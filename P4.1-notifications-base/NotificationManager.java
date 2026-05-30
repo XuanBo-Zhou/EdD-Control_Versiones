@@ -7,17 +7,23 @@ class EmailService implements NotificationService{
         // Lógica compleja de email aquí...
     }
 }
+
+class SMSService implements NotificationService{
+    @Override
+    public void send(String message, String recipient) {
+        // Código para enviar SMS
+        System.out.println("Enviando SMS a " + recipient + ": " + message);
+        // Lógica compleja de SMS aquí...
+    }
+}
+
 public class NotificationManager {
     // TODO: Separar en clases diferentes: EmailService, SMSService, PushService
     // TODO: Aplicar patrón Strategy para los tipos de notificación
     // TODO: Añadir sistema de logs
     
     public void send(String type, String message, String recipient) {
-        if (type.equals("sms")) {
-            // Código para enviar SMS
-            System.out.println("Enviando SMS a " + recipient + ": " + message);
-            // Lógica compleja de SMS aquí...
-        } else if (type.equals("push")) {
+        if (type.equals("push")) {
             // Código para notificación push
             System.out.println("Enviando push a " + recipient + ": " + message);
             // Lógica compleja de push aquí...
