@@ -31,7 +31,16 @@ public class NotificationManager {
     SMSService SService = new SMSService();
     PushService PService = new PushService();
     
-    public void send(String type, String message, String recipient) {
+    public void send(String type, String message, String recipient) throws InvalidNotificationException{
+        if (message.isEmpty())
+            throw new InvalidNotificationException("No hay mensaje que enviar");
+
+        if (recipient.isEmpty())
+            throw new InvalidNotificationException("No hay remitente al que enviar");
+
+        if (type.isEmpty())
+            throw new InvalidNotificationException("No hay tipo de notificación");
+
         System.out.println("[LOG]: Se va a enviar una notificacion de tipo " + type + " a " + recipient + " con el mensaje: ");
         System.out.println("[LOG]: " + message );
         if(type.equals("email")){
@@ -40,10 +49,13 @@ public class NotificationManager {
             SService.send(message, recipient);
         } else if (type.equals("push")) {
             PService.send(message, recipient);
-        }
+        } else throw new InvalidNotificationException("El tipo " + type + " no es valido");
         System.out.println("[LOG]: Se ha enviado correctamente el mensaje.");
     }
-    // TODO: Añadir método para enviar a múltiples destinatarios
-    // TODO: Añadir sistema de reintentos
-    // TODO: Añadir validación de parámetros
+}
+
+class InvalidNotificationException extends Exception {
+    public InvalidNotificationException(String mensaje) {
+        super(mensaje);
+    }
 }
