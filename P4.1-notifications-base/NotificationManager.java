@@ -30,10 +30,10 @@ public class NotificationManager {
     EmailService EService = new EmailService();
     SMSService SService = new SMSService();
     PushService PService = new PushService();
-    // TODO: Aplicar patrón Strategy para los tipos de notificación
-    // TODO: Añadir sistema de logs
     
     public void send(String type, String message, String recipient) {
+        System.out.println("[LOG]: Se va a enviar una notificacion de tipo " + type + " a " + recipient + " con el mensaje: ");
+        System.out.println("[LOG]: " + message );
         if(type.equals("email")){
             EService.send(message, recipient);
         } else if (type.equals("sms")) {
@@ -41,8 +41,8 @@ public class NotificationManager {
         } else if (type.equals("push")) {
             PService.send(message, recipient);
         }
+        System.out.println("[LOG]: Se ha enviado correctamente el mensaje.");
     }
-    
     // TODO: Añadir método para enviar a múltiples destinatarios
     // TODO: Añadir sistema de reintentos
     // TODO: Añadir validación de parámetros
