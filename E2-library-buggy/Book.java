@@ -18,9 +18,12 @@ public class Book {
     public boolean isAvailable() { return available; }
 
     
-    public void borrow() {
-        // BUG 2: No valida si ya está prestado
-        available = false;
+	public void borrow() throws disponibilidadException{
+        if(available){
+            available = false;
+        } else throw new disponibilidadException(
+    "No se puede prestar ya que no está disponible"
+        );
     }
     
     public void returnBook() {
