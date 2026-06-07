@@ -41,3 +41,25 @@ Para cada bug, incluir en el PR:
 ├── E2-Full_Stack_Developer-Debug+Git.pdf
 └── /documentacion/    # Para las capturas de pantalla, entre otras las del debugger
 ```
+## Funcionamiento de la aplicación
+
+La aplicacion es el sistema interno de una biblioteca.
+
+Que permite la:
+- **Creacion de libros**: Con el titulo, autor e ISBN, se crea una instancia de libro, con el valor por defecto de la disponibilidad siendo "disponible".
+
+- **Insercion de libros**: Una vez creado el libro se puede insertar en la biblioteca con una validacion que impide duplicados.
+
+- **Prestacion y devolucion de libros**: Que modifica la disponibiliad de los libros alternativamente entre "disponible y no disponible", hay una verificacion para no prestar un libro no disponible, ni recibir un libro que ya fue devuelto.
+
+- **Obtener datos de los libros**: Los cuales son los siguientes,
+    - Titulo 
+    - Autor
+    - Isbn
+    - Disponibilidad
+
+- **Busqueda de libros por titulo**: Dado un titulo permite buscar entre todos los libros aquel del titulo dado.
+
+- **Busqueda de libros disponibles**: Devuelve una lista de todos los libros disponibles en la biblioteca.
+
+- **Borrar libros**: Permite eliminar un libro dado el titulo de este mismo.
