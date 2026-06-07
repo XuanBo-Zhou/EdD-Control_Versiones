@@ -4,8 +4,13 @@ import java.util.*;
 public class Library {
     private List<Book> books = new ArrayList<>();
     
-    public void addBook(Book book) {
-        // BUG 4: Permite libros duplicados (mismo ISBN)
+    public void addBook(Book book) throws libroInvalidoException{
+        for (int i = 0; i<books.size(); i++) {
+            if (books.get(i).getIsbn().equals(book.getIsbn())) {
+                throw new libroInvalidoException("Ya existe un libro con ese ISBN");
+            }
+        }
+
         books.add(book);
     }
     
