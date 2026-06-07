@@ -14,13 +14,13 @@ public class Library {
         books.add(book);
     }
     
-    public Book findBookByTitle(String title) {
+    public Book findBookByTitle(String title) throws libroInvalidoException{
         for (Book book : books) {
             if (book.getTitle().equalsIgnoreCase(title)) {
                 return book;
             }
         }
-        return null;
+        throw new libroInvalidoException("El libro " + title + " no existe dentro de la biblioteca");
     }
     
     public List<Book> findAvailableBooks() {
@@ -32,9 +32,12 @@ public class Library {
         }
         return availableBooks;
     }
-
     
-    // BUG 8: Falta método para quitar libros
+    public void eraseBookByTitle(String title) throws libroInvalidoException{
+        Book book = findBookByTitle(title);
+        books.remove(book);
+        System.out.println("Se ha borrado el libro " + book.getTitle());
+    }
 }
 
 class libroInvalidoException extends Exception{
