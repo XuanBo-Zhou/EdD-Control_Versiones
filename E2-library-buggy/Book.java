@@ -28,3 +28,10 @@ public class Book {
         available = true;
     }
 }
+
+class disponibilidadException extends Exception{
+    String mensaje;
+    public disponibilidadException(String mensaje) {
+        super(mensaje);
+    }
+}
