@@ -32,3 +32,10 @@ public class Library {
     
     // BUG 8: Falta método para quitar libros
 }
+
+class libroInvalidoException extends Exception{
+    String mensaje;
+    public libroInvalidoException(String mensaje) {
+        super(mensaje);
+    }
+}
