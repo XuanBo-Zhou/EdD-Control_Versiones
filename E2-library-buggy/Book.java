@@ -26,9 +26,12 @@ public class Book {
         );
     }
     
-    public void returnBook() {
-        // BUG 3: No valida si ya estaba disponible
-        available = true;
+    public void returnBook() throws disponibilidadException{
+         if(!available){
+            available = true;
+        } else throw new disponibilidadException(
+    "No se puede devolver ya que está disponible"
+        );
     }
 }
 
